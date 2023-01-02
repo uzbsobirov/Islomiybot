@@ -1,4 +1,6 @@
 from . import help
 from . import start
 from . import admin
-from . import echo
+from . import allbacks
+from . import prayer
+from . import panel

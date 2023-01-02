@@ -3,6 +3,8 @@ from aiogram import types
 from data.config import ADMINS
 from loader import dp, db, bot
 import pandas as pd
+from aiogram.dispatcher import FSMContext
+from keyboards.inline.admin import admin
 
 @dp.message_handler(text="/allusers", user_id=ADMINS)
 async def get_all_users(message: types.Message):
@@ -37,3 +39,9 @@ async def send_ad_to_all(message: types.Message):
 async def get_all_users(message: types.Message):
     db.delete_users()
     await message.answer("Baza tozalandi!")
+
+
+@dp.message_handler(text="/panel", state='*', user_id=ADMINS)
+async def get_all_users(message: types.Message):
+    full_name = message.from_user.full_name
+    await message.answer(f"{full_name} Admin panelga xush kelibsiz👣", reply_markup=admin)
