@@ -4,3 +4,4 @@ from . import admin
 from . import allbacks
 from . import prayer
 from . import panel
+from . import fikrbildirish

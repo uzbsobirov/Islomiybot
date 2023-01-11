@@ -17,3 +17,6 @@ class Textli(StatesGroup):
 class Videoli(StatesGroup):
     textli = State()
     videoli = State()
+
+class Fikr(StatesGroup):
+    fikr = State()

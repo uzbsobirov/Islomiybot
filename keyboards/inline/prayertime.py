@@ -9,6 +9,9 @@ fornamoz = InlineKeyboardMarkup(
         [
             InlineKeyboardButton(text="🕔 Namoz vaqtlari", callback_data='namoztime')
         ],
+        [
+            InlineKeyboardButton(text="📨 Fikr bildirish", callback_data='fikr')
+        ]
     ]
 )
 
@@ -53,6 +56,14 @@ fornamoztimegirl = InlineKeyboardMarkup(
         [
             InlineKeyboardButton(text="Janoza Namozi", callback_data='janozagril'),
             InlineKeyboardButton(text="◀️ Orqaga", callback_data='back')
+        ]
+    ]
+)
+
+answer_to_admin = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(text="✍️ Javob yozish", callback_data='javobyozish')
         ]
     ]
 )
