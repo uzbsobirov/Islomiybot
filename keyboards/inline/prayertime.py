@@ -7,7 +7,8 @@ fornamoz = InlineKeyboardMarkup(
             InlineKeyboardButton(text="🧕Ayollar Uchun", callback_data="namozgirl"),
         ],
         [
-            InlineKeyboardButton(text="🕔 Namoz vaqtlari", callback_data='namoztime')
+            InlineKeyboardButton(text="🕔 Namoz vaqtlari", callback_data='namoztime'),
+            InlineKeyboardButton(text="📖 Quran", callback_data='qurans')
         ],
         [
             InlineKeyboardButton(text="📨 Fikr bildirish", callback_data='fikr')

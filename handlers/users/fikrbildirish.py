@@ -21,10 +21,9 @@ async def fikrbildirdi(message: types.Message, state: FSMContext):
     full_name = message.from_user.full_name
     user_id = message.from_user.get_mention(f"{full_name}", as_html=True)
     userid = message.from_user.id
-    print(userid)
-    await state.update_data({
-        'userid': userid
-    })
+    await state.update_data(
+        {'userid': userid}
+    )
     await bot.send_message(chat_id=ADMINS[0], text=f"<b>{user_id}</b> botga fikr bildirdi📌\n\n <b>{msg}</b>", reply_markup=answer_to_admin)
     await message.answer(text="<b>Xabaringiz adminga jo'natildi✔️</b>")
     await state.finish()
@@ -34,4 +33,5 @@ async def fikrbildirdi(message: types.Message, state: FSMContext):
 @dp.callback_query_handler(text="javobyozish", state='*')
 async def fikrbildir(call: types.CallbackQuery, state: FSMContext):
     data = await state.get_data()
-    user_id = data.get('user_id')
+    user_id = data.get('userid')
+    print(user_id)
