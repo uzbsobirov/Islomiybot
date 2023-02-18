@@ -24,6 +24,7 @@ class Videoli(StatesGroup):
 # Fikr uchun `State`
 class Fikr(StatesGroup):
     fikr = State()
+    javob = State()
 
 
 # Quron uchun `State`
