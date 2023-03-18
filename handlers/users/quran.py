@@ -15,9 +15,10 @@ with codecs.open('verses.json', 'r', encoding='utf-8', errors='ignore') as file:
 # Quranni chiqarish uchun
 @dp.callback_query_handler(text="qurans", state='*')
 async def qurans(call: types.CallbackQuery, state: FSMContext):
-     await call.message.delete()
-     await call.message.answer("<b>Sizga nechanchi bob kerak? Sonlarda kiriting👇👇👇</b>")
-     await Quran.chapter.set()
+    await call.message.delete()
+    await call.message.answer("<b>Sizga nechanchi bob kerak? Sonlarda kiriting👇👇👇</b>")
+    await Quran.chapter.set()
+
 
 @dp.message_handler(state=Quran.chapter)
 async def quran_bob(message: types.Message, state: FSMContext):
@@ -27,6 +28,7 @@ async def quran_bob(message: types.Message, state: FSMContext):
         {'chapter': int(chapter)}
     )
     await Quran.verse.set()
+
 
 @dp.message_handler(state=Quran.verse)
 async def quran_bob(message: types.Message, state: FSMContext):
@@ -39,6 +41,6 @@ async def quran_bob(message: types.Message, state: FSMContext):
                 await message.answer(text=what['text'], reply_markup=back)
                 await state.finish()
                 break
-            
-            
-        
+
+
+

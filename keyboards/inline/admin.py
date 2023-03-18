@@ -8,6 +8,19 @@ admin = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(text="📢 Majburiy obuna", callback_data="majburiy")
+        ],
+        [
+            InlineKeyboardButton(text="◀️ Orqaga", callback_data='tomain')
+        ]
+    ]
+)
+
+back = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(
+                text="◀️ Orqaga", callback_data='topanel'
+            )
         ]
     ]
 )

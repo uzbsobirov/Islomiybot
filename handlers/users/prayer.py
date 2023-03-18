@@ -7,6 +7,8 @@ import requests
 from keyboards.inline.back import back
 from keyboards.inline.prayertime import (fornamoz, fornamoztimeboy,
                                          fornamoztimegirl)
+
+
 # from keyboards.inline.btn_back import turnback
 
 # from states.default_btn import MyState
@@ -14,14 +16,12 @@ from keyboards.inline.prayertime import (fornamoz, fornamoztimeboy,
 # from keyboards.default.fordownload import downbtn
 
 
-
-
-
 @dp.callback_query_handler(text="namoztime", state='*')
 async def namoztime(call: types.CallbackQuery, state: FSMContext):
     await call.message.delete()
     await call.message.answer("Viloyatingiz yoki tumaningiz nomini kiritng👇\n(Hech qanday imlo hatolarsiz❗️)")
     await Prayer.timetype.set()
+
 
 @dp.message_handler(state=Prayer.timetype)
 async def namozvaqti(message: types.Message, state: FSMContext):
@@ -36,12 +36,6 @@ async def namozvaqti(message: types.Message, state: FSMContext):
         await message.answer("Bunday shahar yoki tuman yo'q")
         await Prayer.timetype.set()
 
-    
-
-
-
-
-
 
 @dp.callback_query_handler(text="namozboy", state='*')
 async def namozboy(call: types.CallbackQuery, state: FSMContext):
@@ -49,12 +43,15 @@ async def namozboy(call: types.CallbackQuery, state: FSMContext):
     await call.message.answer("O'zingizga kerakli vaqtni tanlang👇", reply_markup=fornamoztimeboy)
     await Prayer.videotype.set()
 
+
 @dp.callback_query_handler(text="bomdodboy", state=Prayer.videotype)
 async def bomdodboy(call: types.CallbackQuery, state: FSMContext):
     await call.message.delete()
-    
+
     bomdodurl = "https://t.me/forchrabot/31"
-    await call.message.answer_video(video=bomdodurl, caption="Erkaklar uchun <b>Bomdod</b> namozining to'liq o'qilish tartibi", reply_markup=back, parse_mode='html')
+    await call.message.answer_video(video=bomdodurl,
+                                    caption="Erkaklar uchun <b>Bomdod</b> namozining to'liq o'qilish tartibi",
+                                    reply_markup=back, parse_mode='html')
     await state.finish()
 
 
@@ -62,25 +59,29 @@ async def bomdodboy(call: types.CallbackQuery, state: FSMContext):
 async def peshinboy(call: types.CallbackQuery, state: FSMContext):
     await call.message.delete()
     peshinurl = "https://t.me/forchrabot/32"
-    await call.message.answer_video(video=peshinurl, caption="Erkaklar uchun <b>Peshin</b> namozining to'liq o'qilish tartibi", reply_markup=back, parse_mode='html')
+    await call.message.answer_video(video=peshinurl,
+                                    caption="Erkaklar uchun <b>Peshin</b> namozining to'liq o'qilish tartibi",
+                                    reply_markup=back, parse_mode='html')
     await state.finish()
-
 
 
 @dp.callback_query_handler(text="asrboy", state=Prayer.videotype)
 async def asrboy(call: types.CallbackQuery, state: FSMContext):
     await call.message.delete()
     asrurl = "https://t.me/forchrabot/33"
-    await call.message.answer_video(video=asrurl, caption="Erkaklar uchun <b>Asr</b> namozining to'liq o'qilish tartibi", reply_markup=back, parse_mode='html')
+    await call.message.answer_video(video=asrurl,
+                                    caption="Erkaklar uchun <b>Asr</b> namozining to'liq o'qilish tartibi",
+                                    reply_markup=back, parse_mode='html')
     await state.finish()
-
 
 
 @dp.callback_query_handler(text="shomboy", state=Prayer.videotype)
 async def shomboy(call: types.CallbackQuery, state: FSMContext):
     await call.message.delete()
     shomurl = "https://t.me/forchrabot/34"
-    await call.message.answer_video(video=shomurl, caption="Erkaklar uchun <b>Shom</b> namozining to'liq o'qilish tartibi", reply_markup=back, parse_mode='html')
+    await call.message.answer_video(video=shomurl,
+                                    caption="Erkaklar uchun <b>Shom</b> namozining to'liq o'qilish tartibi",
+                                    reply_markup=back, parse_mode='html')
     await state.finish()
 
 
@@ -88,18 +89,20 @@ async def shomboy(call: types.CallbackQuery, state: FSMContext):
 async def janozaboy(call: types.CallbackQuery, state: FSMContext):
     await call.message.delete()
     janozaboy = "https://t.me/forchrabot/43"
-    await call.message.answer_video(video=janozaboy, caption="Erkaklar uchun <b>Janoza</b> namozining to'liq o'qilish tartibi", reply_markup=back, parse_mode='html')
+    await call.message.answer_video(video=janozaboy,
+                                    caption="Erkaklar uchun <b>Janoza</b> namozining to'liq o'qilish tartibi",
+                                    reply_markup=back, parse_mode='html')
     await state.finish()
-
 
 
 @dp.callback_query_handler(text="xuftonboy", state=Prayer.videotype)
 async def xuftonboy(call: types.CallbackQuery, state: FSMContext):
     await call.message.delete()
     xuftonurl = "https://t.me/forchrabot/35"
-    await call.message.answer_video(video=xuftonurl, caption="Erkaklar uchun <b>Xufton</b> namozining to'liq o'qilish tartibi", reply_markup=back, parse_mode='html')
+    await call.message.answer_video(video=xuftonurl,
+                                    caption="Erkaklar uchun <b>Xufton</b> namozining to'liq o'qilish tartibi",
+                                    reply_markup=back, parse_mode='html')
     await state.finish()
-
 
 
 @dp.callback_query_handler(text="duoboy", state=Prayer.videotype)
@@ -117,20 +120,22 @@ Umuman, har vaqt namozni tugatgandan so‘ng Oyatal kursi o‘qilsa, tasbehot qi
     await state.finish()
 
 
-
-#<<Ayollar<<
-@dp.callback_query_handler(text="namozgirl",state='*')
+# <<Ayollar<<
+@dp.callback_query_handler(text="namozgirl", state='*')
 async def namozgirl(call: types.CallbackQuery, state: FSMContext):
     await call.message.delete()
     # namozgirl = "https://t.me/forchrabot/37"
     await call.message.answer("O'zingizga kerakli vaqtni tanlang👇", reply_markup=fornamoztimegirl)
     await Prayer.videotype.set()
 
+
 @dp.callback_query_handler(text="bomdodgirl", state=Prayer.videotype)
 async def bomdodgirl(call: types.CallbackQuery, state: FSMContext):
     await call.message.delete()
     bomdodgirl = "https://t.me/forchrabot/37"
-    await call.message.answer_video(video=bomdodgirl, caption="Ayollar uchun <b>Bomdod</b> namozining to'liq o'qilish tartibi", parse_mode='html', reply_markup=back)
+    await call.message.answer_video(video=bomdodgirl,
+                                    caption="Ayollar uchun <b>Bomdod</b> namozining to'liq o'qilish tartibi",
+                                    parse_mode='html', reply_markup=back)
     await state.finish()
 
 
@@ -138,23 +143,26 @@ async def bomdodgirl(call: types.CallbackQuery, state: FSMContext):
 async def peshingirl(call: types.CallbackQuery, state: FSMContext):
     await call.message.delete()
     peshingirl = "https://t.me/forchrabot/38"
-    await call.message.answer_video(video=peshingirl, caption="Ayollar uchun <b>Peshin</b> namozining o'qilish tartibi", parse_mode='html', reply_markup=back)
+    await call.message.answer_video(video=peshingirl, caption="Ayollar uchun <b>Peshin</b> namozining o'qilish tartibi",
+                                    parse_mode='html', reply_markup=back)
     await state.finish()
-
 
 
 @dp.callback_query_handler(text="asrgirl", state=Prayer.videotype)
 async def asrgirl(call: types.CallbackQuery, state: FSMContext):
     await call.message.delete()
     asrgirl = "https://t.me/forchrabot/39"
-    await call.message.answer_video(video=asrgirl, caption="Ayollar uchun <b>Asr</b> namozining o'qilish tartibi", parse_mode='html', reply_markup=back)
+    await call.message.answer_video(video=asrgirl, caption="Ayollar uchun <b>Asr</b> namozining o'qilish tartibi",
+                                    parse_mode='html', reply_markup=back)
     await state.finish()
+
 
 @dp.callback_query_handler(text="shomgirl", state=Prayer.videotype)
 async def shomgirl(call: types.CallbackQuery, state: FSMContext):
     await call.message.delete()
     shomgirl = "https://t.me/forchrabot/40"
-    await call.message.answer_video(video=shomgirl, caption="Ayollar uchun <b>Shom</b> namozining o'qilish tartibi", parse_mode='html', reply_markup=back)
+    await call.message.answer_video(video=shomgirl, caption="Ayollar uchun <b>Shom</b> namozining o'qilish tartibi",
+                                    parse_mode='html', reply_markup=back)
     await state.finish()
 
 
@@ -163,10 +171,9 @@ async def xuftongirl(call: types.CallbackQuery, state: FSMContext):
     await call.message.delete()
     await state.finish()
     xuftongirl = "https://t.me/forchrabot/41"
-    await call.message.answer_video(video=xuftongirl, caption="Ayollar uchun <b>Xufton</b> namozining o'qilish tartibi", parse_mode='html', reply_markup=back)
+    await call.message.answer_video(video=xuftongirl, caption="Ayollar uchun <b>Xufton</b> namozining o'qilish tartibi",
+                                    parse_mode='html', reply_markup=back)
     await state.finish()
-    
-
 
 
 @dp.callback_query_handler(text="duogirl", state=Prayer.videotype)
@@ -183,18 +190,10 @@ Umuman, har vaqt namozni tugatgandan so‘ng Oyatal kursi o‘qilsa, tasbehot qi
     await call.message.answer(text=msg, reply_markup=back)
     await state.finish()
 
-
-
-
-
-
-
-
-
 # @dp.callback_query_handler(text="back", state=MyState.namozmahal)
 # async def back(call: types.CallbackQuery, state: FSMContext):
 #     await call.message.delete()
-    
+
 #     nphotourl = "https://t.me/forchrabot/30"
 #     await call.message.answer_photo(photo=nphotourl, caption="Sizga kerakli bo'lganini tanlang👇", reply_markup=fornamoz)
 #     await MyState.prayertime.set()

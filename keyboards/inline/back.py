@@ -6,3 +6,9 @@ back = InlineKeyboardMarkup(
         [InlineKeyboardButton(text="◀️ Orqaga", callback_data='back')]
     ]
 )
+
+backk = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text="◀️ Orqaga", callback_data='backk')]
+    ]
+)

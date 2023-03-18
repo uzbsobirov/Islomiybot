@@ -1,2 +1,4 @@
-# Islomiy bot
-Bu bot orqali siz Namoz vaqtlari va Namoz o'qishni o'rganishingiz mumkin!
+# Aiogram-Template
+Pythonda Aiogramdan foydalanib bot yaratish uchun shablon
+
+.env_example change to .env

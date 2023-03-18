@@ -11,7 +11,32 @@ fornamoz = InlineKeyboardMarkup(
             InlineKeyboardButton(text="📖 Quran", callback_data='qurans')
         ],
         [
+            InlineKeyboardButton(text="🌙 Ramazon bo'limi", callback_data='ramazonbolimi')
+        ],
+        [
             InlineKeyboardButton(text="📨 Fikr bildirish", callback_data='fikr')
+        ]
+    ]
+)
+
+fornamoz_admin = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(text="👳Erkaklar Uchun", callback_data="namozboy"),
+            InlineKeyboardButton(text="🧕Ayollar Uchun", callback_data="namozgirl"),
+        ],
+        [
+            InlineKeyboardButton(text="🕔 Namoz vaqtlari", callback_data='namoztime'),
+            InlineKeyboardButton(text="📖 Quran", callback_data='qurans')
+        ],
+        [
+            InlineKeyboardButton(text="🌙 Ramazon bo'limi", callback_data='ramazonbolimi')
+        ],
+        [
+            InlineKeyboardButton(text="📨 Fikr bildirish", callback_data='fikr')
+        ],
+        [
+            InlineKeyboardButton(text="⌨️ Admin panel", callback_data='adminpanel')
         ]
     ]
 )

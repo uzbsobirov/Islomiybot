@@ -6,6 +6,7 @@ import pandas as pd
 from aiogram.dispatcher import FSMContext
 from keyboards.inline.admin import admin
 
+
 @dp.message_handler(text="/allusers", user_id=ADMINS)
 async def get_all_users(message: types.Message):
     users = db.select_all_users()
@@ -24,24 +25,26 @@ async def get_all_users(message: types.Message):
         for x in range(0, len(df), 50):
             await bot.send_message(message.chat.id, df[x:x + 50])
     else:
-       await bot.send_message(message.chat.id, df)
-       
-
-@dp.message_handler(text="/reklama", user_id=ADMINS)
-async def send_ad_to_all(message: types.Message):
-    users = db.select_all_users()
-    for user in users:
-        user_id = user[0]
-        await bot.send_message(chat_id=user_id, text="@BekoDev kanaliga obuna bo'ling!")
-        await asyncio.sleep(0.05)
-
-@dp.message_handler(text="/cleandb", user_id=ADMINS)
-async def get_all_users(message: types.Message):
-    db.delete_users()
-    await message.answer("Baza tozalandi!")
+        await bot.send_message(message.chat.id, df)
 
 
-@dp.message_handler(text="/panel", state='*', user_id=ADMINS)
-async def get_all_users(message: types.Message):
-    full_name = message.from_user.full_name
-    await message.answer(f"{full_name} Admin panelga xush kelibsiz👣", reply_markup=admin)
+# @dp.message_handler(text="/reklama", user_id=ADMINS)
+# async def send_ad_to_all(message: types.Message):
+#     users = db.select_all_users()
+#     for user in users:
+#         user_id = user[0]
+#         await bot.send_message(chat_id=user_id, text="@BekoDev kanaliga obuna bo'ling!")
+#         await asyncio.sleep(0.05)
+#
+#
+# @dp.message_handler(text="/cleandb", user_id=ADMINS)
+# async def get_all_users(message: types.Message):
+#     db.delete_users()
+#     await message.answer("Baza tozalandi!")
+#
+
+@dp.callback_query_handler(text="adminpanel", state='*', user_id=ADMINS)
+async def get_all_users(call: types.CallbackQuery):
+    await call.message.delete()
+    full_name = call.from_user.full_name
+    await call.message.answer(f"{full_name} Admin panelga xush kelibsiz👣", reply_markup=admin)
